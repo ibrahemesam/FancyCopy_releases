@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title style="font-weight: bold;">FancyCopy Licence</title>
+  <link rel="shortcut icon" type="image/x-jpg" href="./asset/favicon.svg" sizes="all">
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/bootstrap.min.4.5.2.css">
+  <script src="js/jquery.min.3.5.1.js"></script>
+  <script src="js/popper.min.1.16.0.js"></script>
+  <script src="js/bootstrap.min.4.5.2.js"></script>
+  <script src="js/darkreader.min.js"></script>
+  <script>
+      if (!window.DarkReader){
+        window.DarkReader = window.darkreader;
+      }else{
+        window.darkreader = window.DarkReader;
+      }
+      window.darkreader.enable(); // default is darkTheme enabled
+  </script>
+  <link rel="stylesheet" href="./css/my.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- <link rel="stylesheet" href="./css/violla-scrript-ttf.css"> -->
+  <script>
+      function getUrlVars() {
+        // Read a page's GET URL variables
+        //   and return them as an associative array.
+        var vars = [],
+          hash;
+        var hashes = window.location.href
+          .slice(window.location.href.indexOf("?") + 1)
+          .split("&");
+        for (var i = 0; i < hashes.length; i++) {
+          hash = hashes[i].split("=");
+          vars.push(hash[0]);
+          vars[hash[0]] = hash[1];
+        }
+        return vars;
+      }
+      window.serial = getUrlVars().serial;
+  </script>
+</head>
+
+<body oncontextmenu="return false;">
+<div>
+  <div class="tab-content" id="tab-content" style="height: calc(100vh - 26px); border-radius:inherit; max-width: max-content;
+  margin: auto auto;"> 
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="m-0 p-0">
+          <div class="d-flex border border-primary rounded p-2 font-size-larger align-items-center justify-content-center mb-2" style="width:max-content; width: 100%;">
+            <img src="./asset/favicon.svg" height="100" />
+            <h1 class="p-2 font-size-larger font-weight-bold mb-0" style="text-align: center;">FancyCopy</h1>
+          </div>
+        <h1 class="border border-info rounded p-2 font-size-larger" style="text-align: center;">البرنامج يتطلب تفعيل</h1>
+        <div class="d-flex border border-success rounded p-2 font-size-larger align-items-center justify-content-center" style="width:max-content; width: 100%; max-width: 80vw">
+          <h2 class="border border-info rounded p-2 font-size-larger mb-0" style="text-align: center; max-width: 80%; user-select: none; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" id="code"><script> document.querySelector('#code').innerHTML = `${window.serial} :كود التفعيل`</script></h2>
+          <button
+          class="btn btn-primary font-weight-bold font-size-large ml-2"
+          onclick="copyTextToClipboard(window.serial); alert('copied')"
+        >
+          <img src="./asset/copy.svg" height="50" />
+          Copy
+        </button>
+        </div>
+          <h2></h2>
+          <h2 class="border border-info rounded p-2 font-size-larger font-weight-bold mb-2" style="text-align: center;">~: Contact Me :~</h2>
+          <div class="card" style="border: 0;">
+         <div class="d-flex">   
+          <button
+            class="btn btn-primary font-weight-bold font-size-large mb-2 w-50 mr-1"
+            onclick="window.open(
+              'https://www.facebook.com/ibrahemmosa3425/',
+              '_blank'
+            );
+            "
+          >
+            <img src="./asset/facebook.svg" height="50" />
+            Ibrahem Essam
+          </button>
+          <button
+            class="btn btn-info font-weight-bold font-size-large mb-2 w-50 ml-1"
+            onclick="window.open(
+              'https://t.me/ibrahemessam',
+              '_blank'
+            );
+            "
+          >
+          <img src="./asset/telegram.svg" height="50" />
+          Ibrahem Essam
+        </button>
+      </div>
+        <button
+          class="btn btn-success font-weight-bold font-size-large mb-2"
+          onclick="window.open(
+            'https://wa.me/+201061929763',
+            '_blank'
+          );
+          "
+        >
+          <img src="./asset/whatsapp.svg" height="50" />
+          +2 010 619 29 763
+        </button>
+        
+      </div>
+        </div>
+      </div>
+    </div>
+  <script src="./js/my.js"></script>
+  <!-- <script src="./js/main.js"></script> -->
+  <script>
+    function fallbackCopyTextToClipboard(text) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    
+    // Avoid scrolling to bottom
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+  }
+  function copyTextToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+      console.log('Async: Copying to clipboard was successful!');
+    }).catch(function (err) {
+      console.log('Async: Could not copy text: ', err);
+      console.log('falling back to old method');
+      fallbackCopyTextToClipboard(text);
+    });
+  }
+  </script>
+</body>
+
+</html>
